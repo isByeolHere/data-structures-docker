@@ -80,8 +80,6 @@ int main()
 			printf("Choice unknown;\n");
 			break;
 		}
-
-
 	}
 	return 0;
 }
@@ -90,38 +88,52 @@ int main()
 
 int insertSortedLL(LinkedList *ll, int item)
 {
-  ListNode *newNode, *current;
-  int index = 0; 
+  int index = 0;
+  ListNode *cur = ll->head;
 
-  newNode = malloc(sizeof(ListNode));
-	if (newNode == NULL) {
-    printf("메모리 할당 오류\n");
-    exit(1);
-  }
-  newNode->item = item;
-  newNode->next = NULL;
-
-  // 리스트가 비어있거나,새항목이 현재항목보다 작은경우
-  if (ll->head == NULL || item < ll->head->item){
-    // 새로운 노드를 맨 앞에 넣어야된다 .
-    newNode->next = ll->head;
-    ll->head = newNode;
-    ll->size++;
-    return 0;
-  }
-//리스트를 돌면서 삽입 위치를 정한다.
-  current = ll->head;
-  while (current->next != NULL && current->next->item < item){
-    current = current->next;
-    index++;
+  while (cur != NULL && cur->item < item) {
+    cur = cur->next;
+    index ++;
   }
 
-  // current 다음에 새로운 노드를 삽입 
-  newNode->next = current->next;
-  current->next = newNode;
-  ll->size++;
+  if (insertNode(ll, index, item) == 0)
+    return index;
+  else
+    return -1;
   
-  return index + 1;
+
+//   ListNode *newNode, *current;
+//   int index = 0; 
+
+//   newNode = malloc(sizeof(ListNode));
+// 	if (newNode == NULL) {
+//     printf("메모리 할당 오류\n");
+//     exit(1);
+//   }
+//   newNode->item = item;
+//   newNode->next = NULL;
+
+//   // 리스트가 비어있거나,새항목이 현재항목보다 작은경우
+//   if (ll->head == NULL || item < ll->head->item){
+//     // 새로운 노드를 맨 앞에 넣어야된다 .
+//     newNode->next = ll->head;
+//     ll->head = newNode;
+//     ll->size++;
+//     return 0;
+//   }
+// //리스트를 돌면서 삽입 위치를 정한다.
+//   current = ll->head;
+//   while (current->next != NULL && current->next->item < item){
+//     current = current->next;  
+//     index++;
+//   }
+
+//   // current 다음에 새로운 노드를 삽입 
+//   newNode->next = current->next;
+//   current->next = newNode;
+//   ll->size++;
+  
+//   return index + 1;
   }
 
 
