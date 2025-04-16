@@ -123,7 +123,6 @@ void printList(LinkedList *ll){
 	printf("\n");
 }
 
-
 void removeAllItems(LinkedList *ll)
 {
 	ListNode *cur = ll->head;
@@ -137,7 +136,6 @@ void removeAllItems(LinkedList *ll)
 	ll->head = NULL;
 	ll->size = 0;
 }
-
 
 ListNode * findNode(LinkedList *ll, int index){
 
